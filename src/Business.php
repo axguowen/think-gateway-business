@@ -93,7 +93,7 @@ class Business
         // 服务注册地址
         $businessWorker->registerAddress = $this->options['register_address'];
         // Gateway通讯密钥
-        $register->secretKey = $this->options['secret_key'];
+        $businessWorker->secretKey = $this->options['secret_key'];
         // 业务处理类
         $businessWorker->eventHandler = $this->options['event_handler'];
         // 如果指定以守护进程方式运行
