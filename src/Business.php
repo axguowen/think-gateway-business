@@ -60,6 +60,9 @@ class Business
     /**
      * 架构函数
      * @access public
+	 * @param App $app 应用实例
+     * @param Input $input 输入
+     * @param Output $output 输出
      * @return void
      */
     public function __construct(App $app, Input $input, Output $output)
@@ -88,6 +91,11 @@ class Business
         $businessWorker = new BusinessWorker();
         // worker名称
         $businessWorker->name = $this->options['name'];
+        if(empty($businessWorker->name)){
+            $businessWorker->name = 'think-gateway-business';
+        }
+        // 设置runtime路径
+        $this->app->setRuntimePath($this->app->getRuntimePath() . $businessWorker->name . DIRECTORY_SEPARATOR);
         // BussinessWorker进程数量
         $businessWorker->count = $this->options['count'];
         // 服务注册地址
